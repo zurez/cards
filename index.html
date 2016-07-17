@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Demo Working of Card generator</title>
+	<style type="text/css">
+		#work-area{
+			width: 500px;
+			height: 500px;
+			border: 1px solid red;
+		}
+		 #draggable {
+		 	/*overflow:auto; */
+		 	width:200px;
+		 	height: 200px;
+		 }
+
+	</style>
+	<link rel="stylesheet" type="text/css" href="css/jqueryui.css">
+	<link rel="stylesheet" type="text/css" href="css/shapes.css">
+</head>
+<body>
+	<div id="work-area">
+			<div id="draggable" class="ui-widget-content">
+				<div id="resizable" class="ui-widget-content heart-shape">
+				</div>
+			</div>
+
+			<!-- Forms for env -->
+			<form>
+				<input type="hidden" name="xPos" value="0" id="xpos">
+				<input type="hidden" name="yPos" value="0" id="ypos">
+				<input type="" name="" class="heart">
+			</form>
+	</div>
+ 
+</body>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jqueryui.js"></script>
+<script type="text/javascript">
+
+
+	$(document).ready(function(xPos,yPos){
+		  $( "#draggable" ).draggable({
+		  	 containment:"#work-area",
+		  	 drag: function(){
+		            var offset = $(this).offset();
+		            var xPos = offset.left;
+		            var yPos = offset.top;
+		            $('#xpos').val(xPos);
+		            $('#ypos').val(yPos);
+		            console.log(xPos,yPos);
+
+		        }
+		  })
+		  $('#resizable').resizable(
+		  	{
+		  		animate: true,
+		  		aspectRatio: 1/1
+		  	}
+		  );
+		  // resizable
+		  // $( "#draggable" ).resizable();
+		 
+	});
+		
+		
+</script>
+</html>
